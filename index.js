@@ -10,9 +10,12 @@ const addUserMiddleware  = ((req, res, next) => {
   req.user = "Guest";
   next();
 })
-app.get("/welcome", addUserMiddleware, (req, res) => {
+app.get("/welcome/:username", addUserMiddleware, (req, res) => {
+    req.user = req.params.username;
+    const { role = "Admin"}  = req.query.role ;
   // res.send(`<h1>Welcome, ${req.user}!</h1>`);
-    res.send(`<h1>Welcome, ${req.user}!</h1>`);
+  // Welcome Julian, your role is Admin
+    res.send(`<h1>Welcome, ${req.user} your role is ${role}!</h1>`);
 
 });
 // Home page
@@ -38,25 +41,15 @@ app.post("/orders", (req, res) => {
   res.send("A new order has been created.");
 })
 
-
-
 // GET /users - Respond with "Here is the list of all users."
 app.get("/users", (req, res) => {
   res.send("Here is the list of all users.");
 })
 
-
-
 // POST /users - Respond with "A new user has been added."
 app.post("/users", (req, res) => {
   res.send("A new user has been added.");
 })
-// GET /products - Respond with "Here is the list of all products."
-app.get("/products", (req, res) => {
-  res.send("Here is the list of all products.");
-})
-
-
 
 // POST /products - Respond with "A new product has been added."
 app.post("/products", (req, res) => {
@@ -64,20 +57,20 @@ app.post("/products", (req, res) => {
 })
 
 
+// POST /categories - Respond with "A new category has been created."
+app.post("/categories", (req, res) => {
+  res.send("A new category has been created.");
+})
 
 // GET /categories - Respond with "Here is the list of all categories."
 app.get("/categories", (req, res) => {
   res.send("Here is the list of all categories.");
 })
 
-
-
-// POST /categories - Respond with "A new category has been created."
-app.post("/categories", (req, res) => {
-  res.send("A new category has been created.");
+// GET /products - Respond with "Here is the list of all products."
+app.get("/products", (req, res) => {
+  res.send("Here is the list of all products.");
 })
-
-
 
 // Handle form submit
 app.post("/create-user", (req, res) => {
