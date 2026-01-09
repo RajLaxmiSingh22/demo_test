@@ -1,5 +1,6 @@
 import express from "express";
 import routes from "./routes.js";
+import st from "./st.js";
 
 const app = express();
 
@@ -14,7 +15,9 @@ app.use((req, res, next) => {
 });
 
 // ✅ Use routes
-app.use(routes);
+// app.use( routes);
+app.use("/", routes);
+app.use("/api", st);
 
 // ✅ 404 (must be last)
 app.use("*", (req, res) => {
