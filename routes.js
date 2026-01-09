@@ -40,6 +40,9 @@ router.post("/users", (req, res) => res.send("A new user has been added."));
 // Products
 router.get("/products", (req, res) => res.send("Here is the list of all products."));
 router.post("/products", (req, res) => res.send("A new product has been added."));
+// books
+router.get("/books", (req, res) => res.send("Here is the list of all books."));
+router.post("/books", (req, res) => res.send("A new book has been added."));
 
 // Categories
 router.get("/categories", (req, res) => res.send("Here is the list of all categories."));
