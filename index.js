@@ -5,6 +5,16 @@ const app = express();
 // Parse form data: application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: false }));
 
+
+const addUserMiddleware  = ((req, res, next) => {
+  req.user = "Guest";
+  next();
+})
+app.get("/welcome", addUserMiddleware, (req, res) => {
+  // res.send(`<h1>Welcome, ${req.user}!</h1>`);
+    res.send(`<h1>Welcome, ${req.user}!</h1>`);
+
+});
 // Home page
 app.get("/", (req, res) => {
   res.send(`
