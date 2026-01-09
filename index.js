@@ -26,6 +26,33 @@ app.get("/", (req, res) => {
   `);
 });
 
+
+// GET /orders - Respond with "Here is the list of all orders."
+app.get("/orders", (req, res) => {
+  res.send("Here is the list of all orders.");
+});
+
+
+// POST /orders - Respond with "A new order has been created."
+app.post("/orders", (req, res) => {
+  res.send("A new order has been created.");
+})
+
+
+
+// GET /users - Respond with "Here is the list of all users."
+app.get("/users", (req, res) => {
+  res.send("Here is the list of all users.");
+})
+
+
+
+// POST /users - Respond with "A new user has been added."
+app.post("/users", (req, res) => {
+  res.send("A new user has been added.");
+})
+
+
 // Handle form submit
 app.post("/create-user", (req, res) => {
   const { username } = req.body;
