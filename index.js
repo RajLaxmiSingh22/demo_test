@@ -51,6 +51,32 @@ app.get("/users", (req, res) => {
 app.post("/users", (req, res) => {
   res.send("A new user has been added.");
 })
+// GET /products - Respond with "Here is the list of all products."
+app.get("/products", (req, res) => {
+  res.send("Here is the list of all products.");
+})
+
+
+
+// POST /products - Respond with "A new product has been added."
+app.post("/products", (req, res) => {
+  res.send("A new product has been added.");
+})
+
+
+
+// GET /categories - Respond with "Here is the list of all categories."
+app.get("/categories", (req, res) => {
+  res.send("Here is the list of all categories.");
+})
+
+
+
+// POST /categories - Respond with "A new category has been created."
+app.post("/categories", (req, res) => {
+  res.send("A new category has been created.");
+})
+
 
 
 // Handle form submit
@@ -62,10 +88,10 @@ app.post("/create-user", (req, res) => {
 });
 
 // Not found (404)
-app.use((req, res) => {
-  res.status(404).send("<h1>Page Not Found</h1>");
+app.use("*", (req, res) => {
+  res.status(404).send("<h1>404 - Page Not Found</h1>");
 });
 
-app.listen(3000, () => {
+app.listen(4000, () => {
   console.log("Server is listening on port 3000");
 });
